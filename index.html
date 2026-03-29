@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium To-Do | 極簡待辦清單</title>
+    <meta name="description" content="一個具備高級感與數據持久化的極簡待辦清單網頁程式。">
+    <!-- Meta for SEO -->
+    <meta name="author" content="Antigravity AI">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Icons (using Lucide icons CDN for premium icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>To-Do List</h1>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
+                Stay focused, be premium.
+            </p>
+        </header>
+
+        <!-- Input Section -->
+        <div class="input-group">
+            <input type="text" id="todo-input" placeholder="新增待辦事項..." autocomplete="off">
+            <button class="add-btn" id="add-btn" title="新增">
+                <i data-lucide="plus"></i>
+            </button>
+        </div>
+
+        <!-- Task List Area -->
+        <ul class="todo-list" id="todo-list">
+            <!-- Items will be injected here by JS -->
+        </ul>
+    </div>
+
+    <!-- Edit Modal Overlay -->
+    <div class="modal-overlay" id="edit-modal">
+        <div class="modal-content">
+            <h2>修改事項</h2>
+            <input type="text" id="edit-input" placeholder="修改內容...">
+            <div class="modal-actions">
+                <button class="btn cancel-btn" id="cancel-edit">取消</button>
+                <button class="btn save-btn" id="save-edit">儲存修改</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Logic -->
+    <script src="script.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
