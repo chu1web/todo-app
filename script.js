@@ -162,6 +162,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Event Listeners ---
 
+    // --- Draggable Logic ---
+    const appContainer = document.querySelector('.app-container');
+    const dragHeader = document.querySelector('header');
+
+    let isDragging = false;
+    let xOffset = 0;
+    let yOffset = 0;
+    let initialX;
+    let initialY;
+
+    dragHeader.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button') || e.target.closest('input')) return;
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+        isDragging = true;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            e.preventDefault();
+            const currentX = e.clientX - initialX;
+            const currentY = e.clientY - initialY;
+            xOffset = currentX;
+            yOffset = currentY;
+            appContainer.style.transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px))`;
+        }
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
     // Add Button Click
     addBtn.addEventListener('click', addTask);
 

@@ -14,15 +14,15 @@
     --text-primary: hsl(0, 0%, 98%);
     --text-secondary: hsl(240, 5%, 70%);
     
-    /* Glassmorphism Tokens */
-    --glass-bg: hsla(240, 10%, 12%, 0.6);
-    --glass-border: hsla(0, 0%, 100%, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    /* Glassmorphism Tokens - Increased Transparency */
+    --glass-bg: hsla(240, 10%, 12%, 0.2);
+    --glass-border: hsla(0, 0%, 100%, 0.15);
+    --glass-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
     
     /* Functional Colors */
     --success: hsl(150, 80%, 60%);
     --danger: hsl(0, 80%, 65%);
-    --item-bg: hsla(240, 10%, 15%, 0.4);
+    --item-bg: hsla(240, 10%, 15%, 0.1);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -38,7 +38,7 @@
 body {
     background-color: var(--bg-color);
     background-image: 
-        linear-gradient(to bottom, rgba(4, 4, 15, 0.7), rgba(4, 4, 15, 0.8)),
+        linear-gradient(to bottom, rgba(4, 4, 15, 0.3), rgba(4, 4, 15, 0.4)),
         url('nature-bg.png');
     background-size: cover;
     background-position: center;
@@ -46,9 +46,6 @@ body {
     background-repeat: no-repeat;
     color: var(--text-primary);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow-x: hidden;
 }
 
@@ -57,18 +54,30 @@ body {
     max-width: 450px;
     padding: 2rem;
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     box-shadow: var(--glass-shadow);
-    margin: 1rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    transition: box-shadow 0.3s ease;
     animation: fadeIn 0.8s ease-out;
 }
 
 header {
     margin-bottom: 2rem;
     text-align: center;
+    cursor: grab;
+    user-select: none;
+    padding: 0.5rem;
+}
+
+header:active {
+    cursor: grabbing;
 }
 
 h1 {
@@ -156,7 +165,7 @@ input[type="text"]:focus {
 }
 
 .todo-item:hover {
-    background: hsla(240, 10%, 20%, 0.6);
+    background: hsla(240, 10%, 20%, 0.3);
     transform: translateX(5px);
 }
 
